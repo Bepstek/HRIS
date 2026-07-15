@@ -51,6 +51,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [isYearly, setIsYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:3001/dashboard")
@@ -73,19 +74,29 @@ export default function Home() {
     <div style={{ minHeight: "100vh", backgroundColor: "#ffffff" }}>
 
       {/* NAVBAR */}
-      <header className="mix-blend-nav" style={{ padding: "0 4rem", justifyContent: "space-between" }}>
+      <header className="mix-blend-nav">
         <div style={{ fontSize: "1.4rem", fontWeight: 600, letterSpacing: "0.1em", fontFamily: "var(--font-serif)" }}>
           AESTHETE<span style={{ fontWeight: 300, fontSize: "0.8rem", letterSpacing: "0.2em", marginLeft: "10px" }}>HRIS</span>
         </div>
 
-        <nav style={{ display: "flex", gap: "3rem" }}>
-          <a href="#about" style={{ color: "inherit", textDecoration: "none", fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>About</a>
-          <a href="#features" style={{ color: "inherit", textDecoration: "none", fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>Modules</a>
-          <a href="#pricing" style={{ color: "inherit", textDecoration: "none", fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>Pricing</a>
-          <a href="#faq" style={{ color: "inherit", textDecoration: "none", fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>FAQ</a>
+        {/* Hamburger Toggle */}
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)} 
+          className="nav-toggle"
+          style={{ color: "inherit" }}
+        >
+          {isMenuOpen ? "✕" : "☰"}
+        </button>
+
+        <nav className={`nav-links ${isMenuOpen ? "open" : ""}`}>
+          <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
+          <a href="#features" onClick={() => setIsMenuOpen(false)}>Modules</a>
+          <a href="#pricing" onClick={() => setIsMenuOpen(false)}>Pricing</a>
+          <a href="#faq" onClick={() => setIsMenuOpen(false)}>FAQ</a>
+          <a href="#pricing" className="mobile-only-btn btn-editorial" onClick={() => setIsMenuOpen(false)}>GET STARTED</a>
         </nav>
 
-        <div>
+        <div className="desktop-only-btn">
           <a href="#pricing" className="swiss-mono" style={{ color: "inherit", textDecoration: "none", fontSize: "0.75rem", letterSpacing: "0.15em", borderBottom: "1px solid #fff", paddingBottom: "2px" }}>
             GET STARTED
           </a>
@@ -93,41 +104,23 @@ export default function Home() {
       </header>
 
       {/* HERO SECTION */}
-      <section id="about" style={{ paddingTop: "180px", paddingBottom: "120px", backgroundColor: "var(--bg-secondary)" }}>
+      <section id="about" style={{ backgroundColor: "var(--bg-secondary)" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 2rem" }}>
           <div className="asymmetric-grid">
-            <div className="col-8" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <div className="col-12" style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
               <span className="swiss-mono" style={{ color: "var(--fg-secondary)", fontSize: "0.8rem", marginBottom: "1.5rem" }}>
                 THE ART OF ORGANIZATIONAL STRUCTURE
               </span>
-              <h1 style={{ fontSize: "clamp(3.5rem, 7vw, 6.5rem)", lineHeight: 0.95, marginBottom: "2rem" }}>
+              <h1 style={{ fontSize: "clamp(2.2rem, 7vw, 6.5rem)", lineHeight: 0.95, marginBottom: "2rem" }}>
                 Artistic management <br />
                 <i>for modern</i> enterprises.
               </h1>
               <p style={{ maxWidth: "540px", color: "var(--fg-secondary)", fontSize: "1.1rem", lineHeight: "1.7", fontWeight: 300, marginBottom: "3rem" }}>
                 Aesthete reimagines the corporate workspace. Clean lines, quiet configurations, and absolute data clarity designed like a high-end architectural layout.
               </p>
-              <div style={{ display: "flex", gap: "2rem" }}>
+              <div className="about-buttons">
                 <a href="#features" className="btn-editorial">Explore System</a>
                 <a href="#pricing" className="btn-editorial-secondary">Check Pricing</a>
-              </div>
-            </div>
-
-            <div className="col-4" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", borderLeft: "1px solid var(--border-color)", paddingLeft: "2rem" }}>
-              <div>
-                <span className="serif-text" style={{ fontSize: "2rem", display: "block", marginBottom: "1rem" }}>Sophisticated Feed</span>
-                <p style={{ fontSize: "0.9rem", color: "var(--fg-secondary)" }}>
-                  Beautifully synthesized statistics running on dedicated NestJS controller pathways.
-                </p>
-              </div>
-
-              {/* Minimalist Dashboard Status Card */}
-              <div style={{ border: "1px solid var(--border-color)", background: "#ffffff", padding: "2rem", marginTop: "3rem" }}>
-                <span className="swiss-mono" style={{ fontSize: "0.7rem", color: "var(--fg-secondary)" }}>SYSTEM MONITOR</span>
-                <h4 className="serif-text" style={{ fontSize: "2rem", marginTop: "0.5rem", textTransform: "uppercase" }}>
-                  {loading ? "Syncing..." : data?.status}
-                </h4>
-                <div style={{ width: "20px", height: "1px", backgroundColor: "var(--fg-primary)", marginTop: "1rem" }}></div>
               </div>
             </div>
           </div>
