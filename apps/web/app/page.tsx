@@ -33,7 +33,7 @@ const LOCAL_FALLBACK_DATA: DashboardData = {
     onboardingCompletion: "88%",
   },
   departments: [
-    { name: "ENGINEERING DIVISION", count: 485, budgetUtilization: "82%" },
+    { name: "ENGINEERING DIVISIONs", count: 485, budgetUtilization: "82%" },
     { name: "CREATIVE & DESIGN", count: 182, budgetUtilization: "90%" },
     { name: "PEOPLE & OPERATIONS", count: 64, budgetUtilization: "75%" },
     { name: "PRODUCT MANAGEMENT", count: 115, budgetUtilization: "88%" },
@@ -71,13 +71,13 @@ export default function Home() {
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#ffffff" }}>
-      
+
       {/* NAVBAR */}
       <header className="mix-blend-nav" style={{ padding: "0 4rem", justifyContent: "space-between" }}>
         <div style={{ fontSize: "1.4rem", fontWeight: 600, letterSpacing: "0.1em", fontFamily: "var(--font-serif)" }}>
           AESTHETE<span style={{ fontWeight: 300, fontSize: "0.8rem", letterSpacing: "0.2em", marginLeft: "10px" }}>HRIS</span>
         </div>
-        
+
         <nav style={{ display: "flex", gap: "3rem" }}>
           <a href="#about" style={{ color: "inherit", textDecoration: "none", fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>About</a>
           <a href="#features" style={{ color: "inherit", textDecoration: "none", fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase" }}>Modules</a>
@@ -178,7 +178,7 @@ export default function Home() {
                 Organize employment vectors and talent profiles with clean, architectural asymmetry.
               </p>
             </div>
-            
+
             <div style={{ borderBottom: "1px solid var(--border-color)", paddingBottom: "3rem" }}>
               <span className="serif-text" style={{ fontSize: "2rem", color: "var(--fg-secondary)", display: "block" }}>II.</span>
               <h3 className="serif-text" style={{ fontSize: "1.6rem", margin: "1rem 0" }}>Bespoke Payroll</h3>
@@ -206,7 +206,7 @@ export default function Home() {
 
           {/* Toggle button minimal */}
           <div style={{ display: "inline-flex", gap: "1.5rem", marginBottom: "4rem", borderBottom: "1px solid var(--fg-primary)", paddingBottom: "0.5rem" }}>
-            <button 
+            <button
               onClick={() => setIsYearly(false)}
               style={{
                 background: "none",
@@ -222,7 +222,7 @@ export default function Home() {
             >
               Monthly billing
             </button>
-            <button 
+            <button
               onClick={() => setIsYearly(true)}
               style={{
                 background: "none",
@@ -309,7 +309,7 @@ export default function Home() {
               }
             ].map((item, idx) => (
               <div key={idx} style={{ borderBottom: "1px solid var(--border-color)", padding: "1.5rem 0" }}>
-                <button 
+                <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
                   style={{
                     width: "100%",
