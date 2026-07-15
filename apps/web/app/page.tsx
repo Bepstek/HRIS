@@ -33,7 +33,7 @@ const LOCAL_FALLBACK_DATA: DashboardData = {
     onboardingCompletion: "88%",
   },
   departments: [
-    { name: "ENGINEERING DIVISIONs", count: 485, budgetUtilization: "82%" },
+    { name: "ENGINEERING DIVISION", count: 485, budgetUtilization: "82%" },
     { name: "CREATIVE & DESIGN", count: 182, budgetUtilization: "90%" },
     { name: "PEOPLE & OPERATIONS", count: 64, budgetUtilization: "75%" },
     { name: "PRODUCT MANAGEMENT", count: 115, budgetUtilization: "88%" },
